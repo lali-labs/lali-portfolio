@@ -11,7 +11,9 @@ This portfolio is designed to **present my work clearly and professionally**. It
 - Demonstrate my skills in HTML, CSS, and JavaScript  
 - Provide a professional online presence for potential employers or collaborators
 
-- **🌐 Files in portfolio repository**
+
+
+## 🌐 Files in portfolio repository**
 - Villa Milas website html code
 
 
