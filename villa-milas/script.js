@@ -16,7 +16,7 @@ function scrollToBooking() {
 let selectedRoom = { type: 'Double Room', price: 60 };
 
 function bookRoom(roomType, price) {
-    selectedRoom = { type: roomType, price: price };
+    selectRoom = { type: roomType, price: price };
     const modal = document.getElementById('bookingModal');
     document.getElementById('roomTypeDisplay').textContent = roomType;
     document.getElementById('summaryPrice').textContent = '€' + price;
@@ -79,4 +79,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const today = new Date().toISOString().split('T')[0];
     document.getElementById('checkin').setAttribute('min', today);
     document.getElementById('checkout').setAttribute('min', today);
+});
+document.addEventListener("DOMContentLoaded", function () {
+
+  const bookBtn = document.getElementById("bookBtn");
+
+  if (bookBtn) {
+    bookBtn.addEventListener("click", function () {
+      alert("Booked!");
+    });
+  }
+
 });
