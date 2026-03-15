@@ -2,8 +2,6 @@
 
 Welcome to my **portfolio repository**! 
 
----
-
 ## 🌟 About This Project
 
 This portfolio is designed to **present my work clearly and professionally**. It’s fully responsive and interactive, providing a smooth user experience across devices.  
@@ -11,7 +9,11 @@ This portfolio is designed to **present my work clearly and professionally**. It
 **Purpose:**  
 - Showcase my web development projects  
 - Demonstrate my skills in HTML, CSS, and JavaScript  
-- Provide a professional online presence for potential employers or collaborators  
+- Provide a professional online presence for potential employers or collaborators
+
+- **🌐 Files in portfolio repository**
+- Villa Milas website html code
+
 
 ---
 
