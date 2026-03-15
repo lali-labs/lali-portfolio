@@ -697,12 +697,6 @@ footer {
     margin-bottom: 25px;
 }
 
-.booking-summary div {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 10px;
-}
-
 .booking-summary .total {
     border-top: 1px solid #ddd;
     padding-top: 10px;
