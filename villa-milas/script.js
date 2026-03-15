@@ -80,3 +80,8 @@ document.getElementById('bookingDetailsForm').addEventListener('submit', (e) => 
     alert('Thank you for your booking request! We will contact you shortly to confirm your reservation.');
     closeModal();
 });
+document.addEventListener('DOMContentLoaded', () => {
+    const today = new Date().toISOString().split('T')[0];
+    document.getElementById('checkin').setAttribute('min', today);
+    document.getElementById('checkout').setAttribute('min', today);
+});
