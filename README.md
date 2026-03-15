@@ -1,8 +1,12 @@
 # 👩‍💻 Laura's Portfolio 
 
 Welcome to my **portfolio repository**! 
+This repository serves, as its name implies as my personal developer portfolio.
+Each file in this repository represents an individual project I have worked on.
+There is a villa-milas.html file which is a webpage I have developed for a hotel.
 
-## 🌟 About This Project
+
+## 🌟 About This Repository
 
 This portfolio is designed to **present my work clearly and professionally**. It’s fully responsive and interactive, providing a smooth user experience across devices.  
 
@@ -10,7 +14,6 @@ This portfolio is designed to **present my work clearly and professionally**. It
 - Showcase my web development projects  
 - Demonstrate my skills in HTML, CSS, and JavaScript  
 - Provide a professional online presence for potential employers or collaborators
-- All my web developement projects will be listed in this repository as new files
 
 
 ---
