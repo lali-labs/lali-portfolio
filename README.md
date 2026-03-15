@@ -3,7 +3,6 @@
 Welcome to my **portfolio repository**! 
 This repository serves, as its name implies as my personal developer portfolio.
 Each file in this repository represents an individual project I have worked on.
-There is a villa-milas.html file which is a webpage I have developed for a hotel.
 
 
 ## 🌟 About This Repository
