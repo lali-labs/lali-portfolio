@@ -1,5 +1,5 @@
-// Set minimum date to today
-const today = new Date().toISOString().split('T')[0];
+// Set minimum date to todayChekin
+const todayCheckin = new Date().toISOString().split('T')[0];
 document.getElementById('checkin').setAttribute('min', todayCheckin);
 document.getElementById('checkout').setAttribute('min', todayCheckout);
 
