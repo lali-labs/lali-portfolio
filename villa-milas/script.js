@@ -1,7 +1,7 @@
 // Set minimum date to today
 const today = new Date().toISOString().split('T')[0];
-document.getElementById('checkin').setAttribute('min', today);
-document.getElementById('checkout').setAttribute('min', today);
+document.getElementById('checkin').setAttribute('min', todayCheckin);
+document.getElementById('checkout').setAttribute('min', todayCheckout);
 
 // Update checkout min date when checkin changes
 document.getElementById('checkin').addEventListener('change', () => {
