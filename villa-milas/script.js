@@ -13,7 +13,7 @@ function scrollToBooking() {
 }
 
 // Booking modal logic
-let selectedRoom = { type: 'Double Room', price: 60 };
+let selectRoom = { type: 'Double Room', price: 60 };
 
 function bookRoom(roomType, price) {
     selectRoom = { type: roomType, price: price };
@@ -88,6 +88,4 @@ document.addEventListener("DOMContentLoaded", function () {
     bookBtn.addEventListener("click", function () {
       alert("Booked!");
     });
-  }
 
-});
