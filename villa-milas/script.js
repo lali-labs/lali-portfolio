@@ -1,91 +1,82 @@
-// Update checkout min date when checkin changes
-document.getElementById('checkin').addEventListener('change', () => {
-    const checkinDate = new Date(document.getElementById('checkin').value);
+document.addEventListener("DOMContentLoaded", () => {
+
+  // Minimum dates
+  const today = new Date().toISOString().split("T")[0];
+  const checkinInput = document.getElementById("checkin");
+  const checkoutInput = document.getElementById("checkout");
+  if (checkinInput && checkoutInput) {
+    checkinInput.setAttribute("min", today);
+    checkoutInput.setAttribute("min", today);
+  }
+
+  // Selected room object
+  let selectedRoom = { type: "Double Room", price: 60 };
+
+  // Update checkout min when checkin changes
+  checkinInput?.addEventListener("change", () => {
+    const checkinDate = new Date(checkinInput.value);
     checkinDate.setDate(checkinDate.getDate() + 1);
-    const minCheckout = checkinDate.toISOString().split('T')[0];
-    document.getElementById('checkout').setAttribute('min', minCheckout);
+    checkoutInput.setAttribute("min", checkinDate.toISOString().split("T")[0]);
     calculateTotal();
-});
+  });
+  checkoutInput?.addEventListener("change", calculateTotal);
 
-// Scroll to booking section
-function scrollToBooking() {
-    document.getElementById('booking').scrollIntoView({ behavior: 'smooth' });
-}
+  // Scroll to booking section
+  window.scrollToBooking = () => {
+    document.getElementById("booking")?.scrollIntoView({ behavior: "smooth" });
+  };
 
-// Booking modal logic
-let selectRoom = { type: 'Double Room', price: 60 };
+  // Booking modal logic
+  function openBookingModal(roomType, price) {
+    selectedRoom = { type: roomType, price };
+    const modal = document.getElementById("bookingModal");
+    if (!modal) return;
 
-function bookRoom(roomType, price) {
-    selectRoom = { type: roomType, price: price };
-    const modal = document.getElementById('bookingModal');
-    document.getElementById('roomTypeDisplay').textContent = roomType;
-    document.getElementById('summaryPrice').textContent = '€' + price;
-
-    const checkin = document.getElementById('checkin').value;
-    const checkout = document.getElementById('checkout').value;
-    const adults = document.getElementById('adults').value;
-    const children = document.getElementById('children').value;
-
-    if (checkin) document.getElementById('summaryCheckin').textContent = checkin;
-    if (checkout) document.getElementById('summaryCheckout').textContent = checkout;
-
-    let guestText = adults + ' Adult' + (adults > 1 ? 's' : '');
-    if (children > 0) {
-        guestText += ', ' + children + ' Child' + (children > 1 ? 'ren' : '');
-    }
-    document.getElementById('summaryGuests').textContent = guestText;
+    const roomDisplay = document.getElementById("roomTypeDisplay");
+    if (roomDisplay) roomDisplay.textContent = roomType;
 
     calculateTotal();
-    modal.classList.add('active');
-}
+    modal.classList.add("active");
+  }
 
-function closeModal() {
-    document.getElementById('bookingModal').classList.remove('active');
-}
+  document.getElementById("modalCloseBtn")?.addEventListener("click", () => {
+    document.getElementById("bookingModal")?.classList.remove("active");
+  });
 
-// Booking form submit
-document.getElementById('bookingForm').addEventListener('submit', (e) => {
+  // Booking form submit
+  document.getElementById("bookingForm")?.addEventListener("submit", (e) => {
     e.preventDefault();
-    const roomType = document.getElementById('roomType').value;
+    const roomType = document.getElementById("roomType")?.value;
     const prices = { double: 60, twin: 55, triple: 84, quadruple: 100 };
-    const roomNames = { double: 'Double Room', twin: 'Twin Room', triple: 'Triple Room', quadruple: 'Quadruple Room' };
-    bookRoom(roomNames[roomType], prices[roomType]);
-});
+    const roomNames = { double: "Double Room", twin: "Twin Room", triple: "Triple Room", quadruple: "Quadruple Room" };
 
-// Calculate total price based on nights and room price
-function calculateTotal() {
-    const checkin = new Date(document.getElementById('checkin').value);
-    const checkout = new Date(document.getElementById('checkout').value);
+    if (roomType) openBookingModal(roomNames[roomType], prices[roomType]);
+  });
 
-    if (checkin && checkout && checkout > checkin) {
-        const nights = Math.ceil((checkout - checkin) / (1000 * 60 * 60 * 24));
-        const total = nights * selectedRoom.price;
-
-        document.getElementById('summaryNights').textContent = nights;
-        document.getElementById('summaryTotal').textContent = '€' + total;
+  // Calculate total price
+  function calculateTotal() {
+    if (!checkinInput || !checkoutInput) return;
+    const checkin = new Date(checkinInput.value);
+    const checkout = new Date(checkoutInput.value);
+    if (checkout > checkin) {
+      const nights = Math.ceil((checkout - checkin) / (1000 * 60 * 60 * 24));
+      const total = nights * selectedRoom.price;
+      document.getElementById("summaryNights")?.textContent = nights;
+      document.getElementById("summaryTotal")?.textContent = "€" + total;
     }
-}
+  }
 
-document.getElementById('checkin').addEventListener('change', calculateTotal);
-document.getElementById('checkout').addEventListener('change', calculateTotal);
-
-// Booking details form submit
-document.getElementById('bookingDetailsForm').addEventListener('submit', (e) => {
+  // Booking details form submit
+  document.getElementById("bookingDetailsForm")?.addEventListener("submit", (e) => {
     e.preventDefault();
-    alert('Thank you for your booking request! We will contact you shortly to confirm your reservation.');
-    closeModal();
-});
-document.addEventListener('DOMContentLoaded', () => {
-    const today = new Date().toISOString().split('T')[0];
-    document.getElementById('checkin').setAttribute('min', today);
-    document.getElementById('checkout').setAttribute('min', today);
-});
-document.addEventListener("DOMContentLoaded", function () {
+    alert("Thank you for your booking request! We will contact you shortly.");
+    document.getElementById("bookingModal")?.classList.remove("active");
+  });
 
+  // Optional Book Now button
   const bookBtn = document.getElementById("bookBtn");
+  bookBtn?.addEventListener("click", () => {
+    alert("Thank you! Scroll down to book your stay.");
+  });
 
-  if (bookBtn) {
-    bookBtn.addEventListener("click", function () {
-      alert("Booked!");
-    });
-
+});
